@@ -36,7 +36,10 @@ input, select, button{
     background: none;
     border: 2px solid #eee;
 }
-
+*:focus{
+    outline: 1px solid #0af;
+    border-color: #0af !important;
+}
 .section--row{
     position: relative;
     display: flex;

@@ -29,7 +29,7 @@ export default class Bookmark {
     
     templateHTML( ){
         this.html.body = this.$(`<div class="section--row bookmark--item ${this.expanded ? 'section--expanded' : ''}"></div>`);
-        this.html.title = this.$(`<div class="bookmark--title">${this.title}</div>`)
+        this.html.title = this.$(`<div tabindex="1" class="bookmark--title">${this.title}</div>`)
         this.html.rating = this.$(`<div class="bookmark--rating">
                                         ${this.templateRatings( )}
                                     </div>`);

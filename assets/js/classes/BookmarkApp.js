@@ -62,8 +62,8 @@ export default class BookmarkApp {
         this.html.body = this.$(`<div class="section--column"></div>`);
         this.html.title = this.$(`<div class="section--row"><h1>My Bookmarks</h1></div>`);
         this.html.buttons = this.$(`<div id="buttonsection" class="section--row"></div>`);
-        this.html.newBookmark = this.$(`<button class="drawn--box" id="newbookmark">New</button>`);
-        this.html.filter = this.$(`<select id="filter" placeholder="Filter By" class="drawn--box" name="filter">
+        this.html.newBookmark = this.$(`<button class="drawn--box" tabindex="1" id="newbookmark">New</button>`);
+        this.html.filter = this.$(`<select id="filter" placeholder="Filter By" tabindex="1" class="drawn--box" name="filter">
                                     <option value="" disabled selected hidden>Filter By</option>
                                     <option value="1">1+ star</option>
                                     <option value="2">2+ stars</option>
@@ -86,21 +86,21 @@ export default class BookmarkApp {
         this.html.form = this.$(`<form id="addnewbookmark" class="section--column">
                                         <h1>My Bookmarks</h1>
                                         <label for="url">Add New Bookmark:</label>
-                                        <input placeholder="https://yourbookmark.here/" type="url" name="url" id="url" required></input>
-                                        <input placeholder="Bookmark Title" type="text" name="title" id="title" required></input>
+                                        <input placeholder="https://yourbookmark.here/" tabindex="1" type="url" name="url" id="url" required></input>
+                                        <input placeholder="Bookmark Title" type="text" tabindex="1" name="title" id="title" required></input>
                                     </form>`);
 
         this.html.formratings = this.$(`<div id="formratingrow" class="section--row">
-                                            <input type="radio" name="rating" value="1" class="rating--star" checked="checked"></input>
-                                            <input type="radio" name="rating" value="2" class="rating--star"></input>
-                                            <input type="radio" name="rating" value="3" class="rating--star"></input>
-                                            <input type="radio" name="rating" value="4" class="rating--star"></input>
-                                            <input type="radio" name="rating" value="5" class="rating--star"></input>
+                                            <input type="radio" tabindex="1" name="rating" value="1" class="rating--star" checked="checked"></input>
+                                            <input type="radio" tabindex="1" name="rating" value="2" class="rating--star"></input>
+                                            <input type="radio" tabindex="1" name="rating" value="3" class="rating--star"></input>
+                                            <input type="radio" tabindex="1" name="rating" value="4" class="rating--star"></input>
+                                            <input type="radio" tabindex="1" name="rating" value="5" class="rating--star"></input>
                                         </div>`);
-        this.html.formdesc = this.$(`<textarea placeholder="Add a description (optional)" name="description" id="description"></textarea>`);
+        this.html.formdesc = this.$(`<textarea placeholder="Add a description (optional)" tabindex="1" name="description" id="description"></textarea>`);
         this.html.formbuttons = this.$(`<div id="formbuttons" class="section--row"></div>`);
-        this.html.formcancel = this.$(`<button class="button--rectangle" id="cancelbutton">Cancel</button>`);
-        this.html.formcreate = this.$(`<button type="submit" class="button--rectangle" id="createbutton">Create</button>`);
+        this.html.formcancel = this.$(`<button class="button--rectangle" tabindex="1" id="cancelbutton">Cancel</button>`);
+        this.html.formcreate = this.$(`<button type="submit" class="button--rectangle" tabindex="1" id="createbutton">Create</button>`);
 
         this.html.formbuttons.appendChild( this.html.formcancel )
         this.html.formbuttons.appendChild( this.html.formcreate )
