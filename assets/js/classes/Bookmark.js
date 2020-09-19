@@ -36,6 +36,7 @@ export default class Bookmark {
         this.html.delete = this.$(`<div class="bookmark--delete hidden"></div>`);
         this.html.info = this.$(`<div class="section--column bookmark--info">
                                         <a href="${this.url}" target="_blank" class="bookmark--url hidden">Visit Site</a>
+                                        <div class="rating--detailed hidden">${this.rating}</div>
                                     </div>`);
         this.html.desc = this.$(`<textarea class="bookmark--description hidden">${this.desc}</textarea>`);
         this.html.info.appendChild( this.html.desc );
@@ -60,6 +61,7 @@ export default class Bookmark {
             this.html.delete.classList.toggle("hidden");
             this.html.info.childNodes[1].classList.toggle("hidden");
             this.html.info.childNodes[3].classList.toggle("hidden");
+            this.html.info.childNodes[5].classList.toggle("hidden");
             this.html.rating.classList.toggle("hidden");
         }
 

@@ -1,6 +1,6 @@
 # Bookmark Management App
 ##### *created by Richard Folea*  
-##### ***[LIVE DEMO](https://aelof3.github.io/BookmarkApp)***  
+##### ***[LIVE DEMO](hthttps://thinkful-ei-shark.github.io/richard-bookmarks-app/)***  
 ---
 ### Project Overview
 

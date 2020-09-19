@@ -312,3 +312,20 @@ div.section--expanded div.bookmark--title {
     border-right:2px solid #eee;
     border-bottom:2px solid #eee;
 }
+
+
+.rating--detailed {
+    position: absolute;
+    right:12%;
+    top:5%;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: bold;
+    width: 2.5rem;
+    height:2.5rem;
+    line-height: 1.7;
+    background-image: url(../images/star2.png);
+    background-size:contain;
+    background-position: center;
+    background-repeat:no-repeat;
+}
