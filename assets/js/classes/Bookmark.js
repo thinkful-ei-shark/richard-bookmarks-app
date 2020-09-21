@@ -12,22 +12,20 @@ export default class Bookmark {
         this.html = {};
         this.r = new BookmarkAPI( );
 
+        // initialize the bookmark
         this.init( );
     }
 
     init( ){
+        // build the html
         this.templateHTML( );
-    }
 
-    send( evt,data ){
-        window.dispatchEvent( new CustomEvent( evt, { detail: data } ) );
+        // setup the event handlers for this bookmark
+        this.setupTemplateEventHandlers( );
     }
-
-    setRating( newRating ){
-        this.rating = newRating;
-    }   
     
     templateHTML( ){
+        // build the html for the bookmark
         this.html.body = this.$(`<div class="section--row bookmark--item ${this.expanded ? 'section--expanded' : ''}"></div>`);
         this.html.title = this.$(`<div tabindex="1" class="bookmark--title">${this.title}</div>`)
         this.html.rating = this.$(`<div class="bookmark--rating">
@@ -44,7 +42,18 @@ export default class Bookmark {
         this.html.body.appendChild( this.html.delete );
         this.html.body.appendChild( this.html.info );
         this.html.body.appendChild( this.html.rating );
-        
+    }
+
+    templateRatings( ){
+        // create the radio button inputs for the star ratings
+        return `<input type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
+    }
+
+    setupTemplateEventHandlers( ){
         this.html.rating.onclick = e => {
             if ( e.target.value >= 1 && e.target.value <= 5) this.r.patch(this.id,{ "rating": e.target.value } );
         }
@@ -68,16 +77,6 @@ export default class Bookmark {
         this.html.delete.onclick = (e)=>{
             this.r.delete( this.id );
         };
-
-    }
-
-    templateRatings( ){
-        
-        return `<input type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
     }
 
     $( txt ){

@@ -12,53 +12,51 @@ export default class BookmarkApp {
 
         this.html = {};
         this.currentPage = "main"; // add
-        this.init( );
     }
 
     init( ){
+        // add the main element, set it as the app element and set the ID, and append it to the body
         this.el = document.createElement("main");
         this.el.setAttribute("id","bookmark--app");
         document.body.appendChild( this.el );
+
+        // define the templates for the pages, main - for the main page, and add - for adding a new bookmark
         this.templates( );
+
+        // setup the event handlers to handle the custom 
         this.setupEventHandlers( );
-        this.r.get();
+
+        // grab the stored bookmarks and run render
+        this.r.get(); 
     }
 
     setupEventHandlers( ){
-        window.addEventListener( "renderMainPage", ( e )=>{
-            this.renderMainPage( );
-        }, false );
-        
+        // use get requests to also call render after updating the bookmarks list
         window.addEventListener( "getRequestResult", ( e )=>{
             this.currentPage = "main";
+            // this creates a new bookmark using the Bookmark class from Bookmark.js for each bookmark returned from the API
             this.bookmarks = e.detail.map( b => new Bookmark(b) )
             this.render( );
         }, false );
 
+        // after each post request to create a bookmark, run the get request to get the updated list
         window.addEventListener( "postRequestResult", ( e )=>{
             this.r.get();
         }, false );
 
+        // after each patch request to update a bookmark, run the get request to get the updated list
         window.addEventListener( "patchRequestResult", ( e )=>{
             this.r.get();
         }, false );
 
+        // after each delete request to remove a bookmark, run the get request to get the updated list
         window.addEventListener( "deleteRequestResult", ( e )=>{
             this.r.get();
         }, false );
     }
 
-    send( evt,data ){
-        window.dispatchEvent( new CustomEvent( evt, { detail: data } ) );
-    }
-    
-    addBookmark( bookmark ){
-        // add new bookmark
-        this.bookmarks.push( bookmark );
-    }
-
     templates( page ){
-        // build the html
+        // build the main page html
         this.html.body = this.$(`<div class="section--column"></div>`);
         this.html.title = this.$(`<div class="section--row"><h1>My Bookmarks</h1></div>`);
         this.html.buttons = this.$(`<div id="buttonsection" class="section--row"></div>`);
@@ -82,7 +80,7 @@ export default class BookmarkApp {
         this.html.body.appendChild( this.html.buttons );
         this.html.body.appendChild( this.html.bookmarks );
 
-        // add bookmark form
+        // build bookmark form html for adding bookmark
         this.html.form = this.$(`<form id="addnewbookmark" class="section--column">
                                         <h1>My Bookmarks</h1>
                                         <label for="url">Add New Bookmark:</label>
@@ -109,26 +107,31 @@ export default class BookmarkApp {
         this.html.form.appendChild( this.html.formdesc );
         this.html.form.appendChild( this.html.formbuttons );
 
+        // after creating templates, add the event handlers for them
         this.setupTemplateEventHandlers( );
     }
 
     setupTemplateEventHandlers( ){
 
+        // when the filter value on the main page is changed, update the list with only bookmarks matching the filter
         this.html.filter.onchange = e => {
             this.filter = this.html.filter.value;
             this.render();
         }
 
+        // in the add new bookmark form, if cancel is pressed return to main
         this.html.formcancel.onclick = e => {
             this.currentPage = "main";
             this.render( );
         }
 
+        // on main page, if new button is clicked, go to add new bookmark form
         this.html.newBookmark.onclick = e => {
             this.currentPage = "add";
             this.render( );
         }
 
+        // on add new bookmark form submit, get values and use a post request to the API to create a new bookmark
         this.html.form.onsubmit = (e)=>{
             e.preventDefault();
             let formData = new FormData( e.target );
@@ -158,49 +161,17 @@ export default class BookmarkApp {
     }
 
     render( ){
+        // depending on the page, render the proper template
         if ( this.currentPage === "main" ) this.renderMainPage( );
         if ( this.currentPage === "add" ) this.renderAddNewPage( );
     }
 
 
     $( txt ){
+        // creates an html node from text
         let t = document.createElement( "template" );
         txt = txt.trim();
         t.innerHTML = txt;
         return t.content.firstChild;
     }
 }
-
-
-/*                TITLE
-* --------------------------------
-* | new bookmark link            |
-* --------------------------------
-* | new bookmark name            |
-* --------------------------------
-* | new bookmark rating          |
-* --------------------------------
-* | description                  |
-* |                              |
-* |                              |
-* |                              |
-* |                              |
-* --------------------------------
-*/
-
-
-
-// main page
-/*                TITLE
-* --------------------------------
-* |NewBookmarkButton | filterList|
-* --------------------------------
-* | bookmark1       * * * * *    |
-* --------------------------------
-* | bookmark2       * * * * *    |
-* --------------------------------
-* | bookmark3       * * * * *    |
-* --------------------------------
-* | bookmark4       * * * * *    |
-* --------------------------------
-*/
