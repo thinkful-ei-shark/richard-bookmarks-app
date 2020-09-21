@@ -9,6 +9,8 @@ export default class BookmarkAPI {
 
     get(){
         // get array of stored bookmarks
+        
+        // set self to this so that we can use this inside the fetch function
         let self = this;
         fetch( `${self.url}bookmarks` )
             .then((r)=>r.json( ))
@@ -24,6 +26,7 @@ export default class BookmarkAPI {
         // create bookmark
         // example data: { "title": "Yahoo", "url": "http://yahoo.com", "desc":"this is a temporary description", "rating":3 }
 
+        // set self to this so that we can use this inside the fetch function
         let self = this;
 
         let options = {
@@ -51,8 +54,9 @@ export default class BookmarkAPI {
 
     patch(id,data){
         // update bookmark with id
-        // example data: { "rating":5 }
+        // example data to update: { "rating":5 }
         
+        // set self to this so that we can use this inside the fetch function
         let self = this;
 
         let options = {
@@ -79,6 +83,9 @@ export default class BookmarkAPI {
     }
 
     delete(id){
+        // delete bookmark with id
+
+        // set self to this so that we can use this inside the fetch function
         let self = this;
         let options = {
             method: 'DELETE',
