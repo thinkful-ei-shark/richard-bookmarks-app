@@ -7,5 +7,5 @@ const app = new BookmarkApp({
     filter:0
 });
 
-// initialize the app - create the main element, get stored bookmarks, render, etc
+// initialize the app - create the main element (line 19 in BookmarkApp.js), get stored bookmarks, render (line 163 in BookmarkApp.js), etc
 app.init( );
