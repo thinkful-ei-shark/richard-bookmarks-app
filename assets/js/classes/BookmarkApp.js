@@ -89,11 +89,11 @@ export default class BookmarkApp {
                                     </form>`);
 
         this.html.formratings = this.$(`<div id="formratingrow" class="section--row">
-                                            <input type="radio" tabindex="1" name="rating" value="1" class="rating--star" checked="checked"></input>
-                                            <input type="radio" tabindex="1" name="rating" value="2" class="rating--star"></input>
-                                            <input type="radio" tabindex="1" name="rating" value="3" class="rating--star"></input>
-                                            <input type="radio" tabindex="1" name="rating" value="4" class="rating--star"></input>
-                                            <input type="radio" tabindex="1" name="rating" value="5" class="rating--star"></input>
+                                            <label><input type="radio" tabindex="1" name="rating" value="1" class="rating--star" checked="checked"></input></label>
+                                            <label><input type="radio" tabindex="1" name="rating" value="2" class="rating--star"></input></label>
+                                            <label><input type="radio" tabindex="1" name="rating" value="3" class="rating--star"></input></label>
+                                            <label><input type="radio" tabindex="1" name="rating" value="4" class="rating--star"></input></label>
+                                            <label><input type="radio" tabindex="1" name="rating" value="5" class="rating--star"></input></label>
                                         </div>`);
         this.html.formdesc = this.$(`<textarea placeholder="Add a description (optional)" tabindex="1" name="description" id="description"></textarea>`);
         this.html.formbuttons = this.$(`<div id="formbuttons" class="section--row"></div>`);
