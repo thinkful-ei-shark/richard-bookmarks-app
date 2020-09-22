@@ -26,6 +26,8 @@ export default class Bookmark {
     
     templateHTML( ){
         // build the html for the bookmark
+        let desclabel = this.randomID();
+        
         this.html.body = this.$(`<div class="section--row bookmark--item ${this.expanded ? 'section--expanded' : ''}"></div>`);
         this.html.title = this.$(`<div tabindex="1" class="bookmark--title">${this.title}</div>`)
         this.html.rating = this.$(`<div class="bookmark--rating">
@@ -35,8 +37,9 @@ export default class Bookmark {
         this.html.info = this.$(`<div class="section--column bookmark--info">
                                         <a href="${this.url}" target="_blank" class="bookmark--url hidden">Visit Site</a>
                                         <div class="rating--detailed hidden">${this.rating}</div>
+                                        <label class="uselesslabel" for="${desclabel}">r2</label>
                                     </div>`);
-        this.html.desc = this.$(`<textarea class="bookmark--description hidden">${this.desc}</textarea>`);
+        this.html.desc = this.$(`<textarea id="${desclabel}" class="bookmark--description hidden">${this.desc}</textarea>`);
         this.html.info.appendChild( this.html.desc );
         this.html.body.appendChild( this.html.title );
         this.html.body.appendChild( this.html.delete );
@@ -45,13 +48,11 @@ export default class Bookmark {
     }
 
     templateRatings( ){
-        let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let N = 8;
-        let r1 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-        let r2 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-        let r3 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-        let r4 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
-        let r5 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+        let r1 = this.randomID();
+        let r2 = this.randomID();
+        let r3 = this.randomID();
+        let r4 = this.randomID();
+        let r5 = this.randomID();
 
         // create the radio button inputs for the star ratings
         return `<label class="uselesslabel" for="${r1}">r1</label>
@@ -64,6 +65,12 @@ export default class Bookmark {
                 <input id="${r3}" type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
                 <input id="${r4}" type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
                 <input id="${r5}" type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
+    }
+
+    randomID(){
+        let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let N = 28;
+        return Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join(''); 
     }
 
     setupTemplateEventHandlers( ){
@@ -83,7 +90,7 @@ export default class Bookmark {
             this.html.delete.classList.toggle("hidden");
             this.html.info.childNodes[1].classList.toggle("hidden");
             this.html.info.childNodes[3].classList.toggle("hidden");
-            this.html.info.childNodes[5].classList.toggle("hidden");
+            this.html.desc.classList.toggle("hidden");
             this.html.rating.classList.toggle("hidden");
         }
 
