@@ -46,11 +46,11 @@ export default class Bookmark {
 
     templateRatings( ){
         // create the radio button inputs for the star ratings
-        return `<label><input type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input></label>
-                <label><input type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input></label>
-                <label><input type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input></label>
-                <label><input type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input></label>
-                <label><input type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input></label>`;
+        return `<input type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
+                <input type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
     }
 
     setupTemplateEventHandlers( ){
