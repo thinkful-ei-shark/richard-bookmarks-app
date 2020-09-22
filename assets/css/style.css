@@ -157,6 +157,10 @@ input, select, button{
     background-repeat: no-repeat;
     margin: 3.5px;
 }
+.uselesslabel{
+    display:none;
+    flex: 0;
+}
 
 .rating--star {
     position: relative;

@@ -45,12 +45,25 @@ export default class Bookmark {
     }
 
     templateRatings( ){
+        let s = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        let N = 8;
+        let r1 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+        let r2 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+        let r3 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+        let r4 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+        let r5 = Array.apply(null, Array(N)).map(function() { return s.charAt(Math.floor(Math.random() * s.length)); }).join('');
+
         // create the radio button inputs for the star ratings
-        return `<input type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
-                <input type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
+        return `<label class="uselesslabel" for="${r1}">r1</label>
+                <label class="uselesslabel" for="${r2}">r2</label>
+                <label class="uselesslabel" for="${r3}">r3</label>
+                <label class="uselesslabel" for="${r4}">r4</label>
+                <label class="uselesslabel" for="${r5}">r5</label>
+                <input id="${r1}" type="radio" name="rating-${this.id}" value="1" class="rating--star" ${(this.rating === 1) ? 'checked="checked"':''}></input>
+                <input id="${r2}" type="radio" name="rating-${this.id}" value="2" class="rating--star" ${(this.rating === 2) ? 'checked="checked"':''}></input>
+                <input id="${r3}" type="radio" name="rating-${this.id}" value="3" class="rating--star" ${(this.rating === 3) ? 'checked="checked"':''}></input>
+                <input id="${r4}" type="radio" name="rating-${this.id}" value="4" class="rating--star" ${(this.rating === 4) ? 'checked="checked"':''}></input>
+                <input id="${r5}" type="radio" name="rating-${this.id}" value="5" class="rating--star" ${(this.rating === 5) ? 'checked="checked"':''}></input>`;
     }
 
     setupTemplateEventHandlers( ){

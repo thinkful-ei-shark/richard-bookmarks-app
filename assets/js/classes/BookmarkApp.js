@@ -85,15 +85,21 @@ export default class BookmarkApp {
                                         <h1>My Bookmarks</h1>
                                         <label for="url">Add New Bookmark:</label>
                                         <input placeholder="https://yourbookmark.here/" tabindex="1" type="url" name="url" id="url" required></input>
+                                        <label class="uselesslabel" for="title">label</label>
                                         <input placeholder="Bookmark Title" type="text" tabindex="1" name="title" id="title" required></input>
                                     </form>`);
 
         this.html.formratings = this.$(`<div id="formratingrow" class="section--row">
-                                            <label><input type="radio" tabindex="1" name="rating" value="1" class="rating--star" checked="checked"></input></label>
-                                            <label><input type="radio" tabindex="1" name="rating" value="2" class="rating--star"></input></label>
-                                            <label><input type="radio" tabindex="1" name="rating" value="3" class="rating--star"></input></label>
-                                            <label><input type="radio" tabindex="1" name="rating" value="4" class="rating--star"></input></label>
-                                            <label><input type="radio" tabindex="1" name="rating" value="5" class="rating--star"></input></label>
+                                            <label class="uselesslabel" for="radiostar1">radiostar1</label>
+                                            <label class="uselesslabel" for="radiostar2">radiostar2</label>
+                                            <label class="uselesslabel" for="radiostar3">radiostar3</label>
+                                            <label class="uselesslabel" for="radiostar4">radiostar4</label>
+                                            <label class="uselesslabel" for="radiostar5">radiostar5</label>
+                                            <input id="radiostar1" type="radio" tabindex="1" name="rating" value="1" class="rating--star" checked="checked"></input>
+                                            <input id="radiostar2" type="radio" tabindex="1" name="rating" value="2" class="rating--star"></input>
+                                            <input id="radiostar3" type="radio" tabindex="1" name="rating" value="3" class="rating--star"></input>
+                                            <input id="radiostar4" type="radio" tabindex="1" name="rating" value="4" class="rating--star"></input>
+                                            <input id="radiostar5" type="radio" tabindex="1" name="rating" value="5" class="rating--star"></input>
                                         </div>`);
         this.html.formdesc = this.$(`<textarea placeholder="Add a description (optional)" tabindex="1" name="description" id="description"></textarea>`);
         this.html.formbuttons = this.$(`<div id="formbuttons" class="section--row"></div>`);
