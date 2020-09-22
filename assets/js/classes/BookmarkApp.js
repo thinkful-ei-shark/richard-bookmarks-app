@@ -59,7 +59,7 @@ export default class BookmarkApp {
         // build the main page html
         this.html.body = this.$(`<div class="section--column"></div>`);
         this.html.title = this.$(`<div class="section--row"><h1>My Bookmarks</h1></div>`);
-        this.html.buttons = this.$(`<div id="buttonsection" class="section--row"></div>`);
+        this.html.buttons = this.$(`<div id="buttonsection" class="section--row"><label class="uselesslabel" for="filter">filter</label></div>`);
         this.html.newBookmark = this.$(`<button class="drawn--box" tabindex="1" id="newbookmark">New</button>`);
         this.html.filter = this.$(`<select id="filter" placeholder="Filter By" tabindex="1" class="drawn--box" name="filter">
                                     <option value="" disabled selected hidden>Filter By</option>
