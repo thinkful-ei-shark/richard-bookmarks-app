@@ -15,10 +15,7 @@ export default class BookmarkApp {
     }
 
     init( ){
-        // add the main element, set it as the app element and set the ID, and append it to the body
-        this.el = document.createElement("main");
-        this.el.setAttribute("id","bookmark--app");
-        document.body.appendChild( this.el );
+        this.el = document.getElementById( "bookmark--app" );
 
         // define the templates for the pages, main - for the main page, and add - for adding a new bookmark
         this.templates( );
